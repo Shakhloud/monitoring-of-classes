@@ -1,0 +1,50 @@
+﻿@page "/report"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+@using BlazorDomain
+
+<h3>Отчетность</h3>
+
+<div>
+    <h4>Самое посещаемое занятие:</h4>
+    @if (mostVisitedLesson != null)
+    {
+        <p>Тема: @mostVisitedLesson.Title</p>
+        <p>Количество посетивших: @mostVisitedLesson.Attendance</p>
+    }
+    else
+    {
+        <p>Нет данных о самом посещаемом занятии.</p>
+    }
+</div>
+
+<div>
+    <h4>Наименее посещаемое занятие:</h4>
+    @if (leastVisitedLesson != null)
+    {
+        <p>Тема: @leastVisitedLesson.Title</p>
+        <p>Количество посетивших: @leastVisitedLesson.Attendance</p>
+    }
+    else
+    {
+        <p>Нет данных о наименее посещаемом занятии.</p>
+    }
+</div>
+
+<button @onclick="ReturnHome">Вернуться на главную</button>
+
+@code {
+    private LessonDTO mostVisitedLesson;
+    private LessonDTO leastVisitedLesson;
+
+    protected override async Task OnInitializedAsync()
+    {
+        mostVisitedLesson = await HttpClient.GetFromJsonAsync<LessonDTO>("https://localhost:7145/api/Lesson/mostVisited");
+        leastVisitedLesson = await HttpClient.GetFromJsonAsync<LessonDTO>("https://localhost:7145/api/Lesson/leastVisited");
+    }
+
+    private void ReturnHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

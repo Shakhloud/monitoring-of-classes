@@ -1,0 +1,40 @@
+﻿@page "/lessonDetails/{Id}"
+@using BlazorDomain
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Подробная информация о занятии</h3>
+
+@if (lesson != null)
+{
+    <p>Название: @lesson.Title</p>
+    <p>Тема: @lesson.Subject</p>
+    <p>Преподаватель: @lesson.Teacher.Name @lesson.Teacher.Surname</p>
+    <p>Кол-во посетивших: @lesson.Attendance</p>
+
+    <button class="btn btn-primary" @onclick="ReturnToList">Закрыть</button>
+}
+else
+{
+    <p>Загрузка страницы...</p>
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private LessonDTO lesson;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (int.TryParse(Id, out int parsedId))
+        {
+            lesson = await Http.GetFromJsonAsync<LessonDTO>($"https://localhost:7145/api/Lesson/{parsedId}");
+        }
+    }
+
+    private void ReturnToList()
+    {
+        NavigationManager.NavigateTo("/showLessons"); // Переход на страницу со списком занятий
+    }
+}

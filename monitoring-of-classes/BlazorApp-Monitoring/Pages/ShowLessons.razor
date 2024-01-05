@@ -1,0 +1,123 @@
+﻿@page "/showLessons"
+
+@using System.Net.Http
+@inject HttpClient Http
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+@using BlazorDomain
+@inject NavigationManager Navigation
+
+<style type="text/css">
+
+    #result {
+        background-color: #f2f5f7;
+        border: 1px solid #bbbbbf;
+        border-radius: 15px;
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 19px;
+    }
+
+    #btnSubmit {
+        margin: 15px;
+    }
+
+    .table {
+        text-align:center;
+    }
+</style>
+
+<p>@MessageAdd</p>
+@if (fulfil && lessons == null)
+{
+    <p>Занятия отсутствуют.</p>
+}
+else if (!fulfil && lessons == null)
+{
+    <p>Идет загрузка...</p>
+}
+
+@if (lessons != null)
+{
+    <div id="result">
+        <table class="table">
+            <thead>
+                <tr align="center">
+                    <th colspan="4">Занятия:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lesson in lessons)
+                {
+                    <tr>
+                        <td>
+                            @lesson.Title
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-info" type="button" @onclick="() => Update_Click(lesson.Id)" id="btn">
+                                Редактировать
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-info" @onclick="() => ViewLessonDetails(lesson.Id)">
+                                Подробнее
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger" type="button" @onclick="() => Delete_Click(lesson.Id)" id="btn">
+                                Удалить
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}
+
+@code {
+    [Parameter]
+    public string MessageAdd { get; set; }
+
+    private IEnumerable<LessonDTO> lessons;
+    private bool fulfil = false;
+
+    protected override async Task OnParametersSetAsync() =>
+        lessons = await Http.GetFromJsonAsync<LessonDTO[]>
+            ("https://localhost:7145/api/Lesson");
+
+    protected override async Task OnInitializedAsync()
+    {
+        lessons = await Http.GetFromJsonAsync<IEnumerable<LessonDTO>>
+            ("https://localhost:7145/api/Lesson");
+        fulfil = true;
+    }
+}
+
+@code {
+
+    protected async Task Delete_Click(int lessonId)
+    {
+        await Http.DeleteAsync($"https://localhost:7145/api/Lesson/{lessonId}");
+        Navigation.NavigateTo("/showLessons", true);
+    }
+
+    protected async Task Update_Click(int lessonId)
+    {
+        Navigation.NavigateTo($"/editLesson/{lessonId}");
+    }
+
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    private void ViewLessonDetails(int lessonId)
+    {
+        NavigationManager.NavigateTo($"/lessonDetails/{lessonId}");
+    }
+}

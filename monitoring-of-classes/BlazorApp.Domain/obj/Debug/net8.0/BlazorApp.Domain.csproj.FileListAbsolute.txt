@@ -1,0 +1,14 @@
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\bin\Debug\net8.0\BlazorApp.Domain.deps.json
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\bin\Debug\net8.0\BlazorApp.Domain.dll
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\bin\Debug\net8.0\BlazorApp.Domain.pdb
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.AssemblyInfoInputs.cache
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.AssemblyInfo.cs
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.csproj.CoreCompileInputs.cache
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.sourcelink.json
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.dll
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\refint\BlazorApp.Domain.dll
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.pdb
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\ref\BlazorApp.Domain.dll
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\bin\Debug\net8.0\BlazorApp.Domain.runtimeconfig.json
+I:\university\opacy\monitoring-of-classes\monitoring-of-classes\BlazorApp.Domain\obj\Debug\net8.0\BlazorApp.Domain.genruntimeconfig.cache

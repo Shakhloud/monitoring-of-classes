@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\obj\\Debug\\net8.0\\compressed\\0w2id0rljc.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorApp-Monitoring.styles.css",
+      "PackagePath": "staticwebassets\\BlazorApp-Monitoring.styles.css"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "I:\\university\\opacy\\monitoring-of-classes\\monitoring-of-classes\\BlazorApp-Monitoring\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BlazorApp-Monitoring.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BlazorApp-Monitoring.props",
+      "PackagePath": "build\\BlazorApp-Monitoring.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorApp-Monitoring.props",
+      "PackagePath": "buildMultiTargeting\\BlazorApp-Monitoring.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BlazorApp-Monitoring.props",
+      "PackagePath": "buildTransitive\\BlazorApp-Monitoring.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

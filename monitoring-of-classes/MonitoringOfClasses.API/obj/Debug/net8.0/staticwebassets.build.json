@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WvW/eLUPS6AmmAfbBTazQ0HgOkBgkg4HAZphtfHj1yM=",
+  "Source": "MonitoringOfClasses.API",
+  "BasePath": "_content/MonitoringOfClasses.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

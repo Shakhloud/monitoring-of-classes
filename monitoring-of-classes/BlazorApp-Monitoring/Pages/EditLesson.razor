@@ -1,0 +1,122 @@
+﻿@page "/editLesson/{Id}"
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
+@using BlazorDomain
+@inject HttpClient Http
+
+<PageTitle>Редактирование занятия:</PageTitle>
+
+@if (lesson != null)
+{
+<div id="allforms">
+    <div id="edit_form">
+        <div id="element">
+            <EditForm Model="@lesson">
+                <p>
+                    <b>Редактирование занятия</b>
+                </p>
+                <p>
+                    Название занятия:<br />
+                    <InputText id="name" @bind-Value="@lesson.Title" class="form-control" />
+                </p>
+                <p>
+                    Предмет:<br />
+                    <InputText id="lastName" @bind-Value="@lesson.Subject" class="form-control" />
+                </p>
+                <p>
+                    Кол-во посетивших:<br />
+                    <InputNumber id="attendance" @bind-Value="@lesson.Attendance" class="form-control" />
+                </p>
+                <p>
+                    Id учителя:<br />
+                    <InputNumber id="teacherId" @bind-Value="@lesson.TeacherId" class="form-control" />
+                </p>
+                <button type="submit" class="btn btn-primary btn-sm" @onclick="submitLesson">Изменить</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+}
+else
+{
+    <p>Загрузка данных...</p>
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; } // Параметр Id из URL
+
+    private int lessonId; // Переменная для хранения Id урока
+
+    private string successMessage = "";
+    private string errorMessage = "";
+
+    private LessonDTO lesson;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (int.TryParse(Id, out int parsedId)) // Попытка конвертировать строку Id в int
+        {
+            if (lessonId != null) {
+            lessonId = parsedId; // Присвоение сконвертированного значения переменной lessonId
+                                 // Загрузка данных для редактирования урока по lessonId
+            lesson = await Http.GetFromJsonAsync<LessonDTO>($"https://localhost:7145/api/Lesson/{lessonId}");
+            }
+        }
+        else
+        {
+            // Обработка ошибки невозможности конвертации Id в int
+            // Например, перенаправление на страницу с ошибкой или другая логика обработки ошибки
+        }
+    }
+
+    private async Task UpdateLesson()
+    {
+        if (lesson != null)
+        {
+            var apiUrl = $"https://localhost:7145/api/Lesson/{lesson.Id}"; // URL для обновления урока
+
+            // Выполнение запроса PUT для обновления данных урока
+            var response = await Http.PutAsJsonAsync(apiUrl, lesson);
+
+            if (response.IsSuccessStatusCode)
+            {
+                successMessage = "Изменения успешно применены";
+                errorMessage = ""; // Очищаем сообщение об ошибке
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                errorMessage = $"Ошибка обновления: {error}";
+                successMessage = ""; // Очищаем сообщение об успешном обновлении
+            }
+        }
+    }
+
+    async Task submitLesson()
+    {
+        if (lesson != null)
+        {
+            await UpdateLesson();
+        }
+        else
+        {
+            errorMessage = $"Непредвиденная ошибка";
+            successMessage = ""; // Очищаем сообщение об успешном обновлении
+        }
+    }
+}

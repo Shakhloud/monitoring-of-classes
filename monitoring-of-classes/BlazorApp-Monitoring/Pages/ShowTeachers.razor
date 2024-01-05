@@ -1,0 +1,97 @@
+﻿@page "/showTeachers"
+
+@using System.Net.Http
+@inject HttpClient Http
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+@using BlazorDomain
+@inject NavigationManager Navigation
+
+<style type="text/css">
+
+    #result {
+        background-color: #f2f5f7;
+        border: 1px solid #bbbbbf;
+        border-radius: 15px;
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 19px;
+    }
+
+    #btnSubmit {
+        margin: 15px;
+    }
+
+    .table {
+        text-align:center;
+    }
+</style>
+
+<p>@MessageAdd</p>
+@if (fulfil && teachers == null)
+{
+    <p>Пользователи отсутствуют.</p>
+}
+else if (!fulfil && teachers == null)
+{
+    <p>Идет загрузка...</p>
+}
+
+@if (teachers != null)
+{
+    <div id="result">
+        <table class="table">
+            <thead>
+                <tr align="center">
+                    <th colspan="4">Преподаватели:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>Имя</td>
+                    <td>Фамилия</td>
+                    <td>Номер телефона</td>
+                </tr>
+                @foreach (var teacher in teachers)
+                {
+                    <tr>
+                        <td>
+                            @teacher.Id
+                        </td>
+                        <td>
+                            @teacher.Name
+                        </td>
+                        <td>
+                            @teacher.Surname
+                        </td>
+                        <td>
+                            @teacher.Phone
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+@code {
+    [Parameter]
+    public string MessageAdd { get; set; }
+
+    private IEnumerable<TeacherDTO> teachers;
+    private bool fulfil = false;
+
+    protected override async Task OnParametersSetAsync() =>
+        teachers = await Http.GetFromJsonAsync<TeacherDTO[]>
+            ("https://localhost:7145/api/Teacher");
+
+    protected override async Task OnInitializedAsync()
+    {
+        teachers = await Http.GetFromJsonAsync<IEnumerable<TeacherDTO>>
+            ("https://localhost:7145/api/Teacher");
+        fulfil = true;
+    }
+}

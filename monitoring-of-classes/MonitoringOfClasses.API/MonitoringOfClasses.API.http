@@ -1,0 +1,6 @@
+@MonitoringOfClasses.API_HostAddress = http://localhost:5228
+
+GET {{MonitoringOfClasses.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
